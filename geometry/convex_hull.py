@@ -18,6 +18,7 @@ def vector(point1: Tuple, point2: Tuple):
 
 
 def clockwise(a: Tuple, b: Tuple, c: Tuple):
+    """ Vector a - c is in clockwise direction from vector b - c"""
     return a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1]) < 0
 
 
