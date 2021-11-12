@@ -1,19 +1,34 @@
 from typing import List
 
 
-def merge(a, l, m, r):
-    n1 = m - l + 1
-    n2 = r - m
-def merge_sort(a: List):
-    if len(a) == 1:
-        return a
-    n = len(a)
-    b = merge_sort(a[:n//2])
-    c = merge_sort(a[n//2:])
-    if b[0] >= c[-1]:
-        return c + b
-    else:
-        return b + c
+def merge(L, R):
+    arr = []
+    j = k = 0
+    while j < len(L) and k < len(R):
+        if L[j] < R[k]:
+            arr.append(L[j])
+            j += 1
+        else:
+            arr.append(R[k])
+            k += 1
 
-a = list(map(int, input().split()))
-print(merge_sort(a))
+    arr += L[j:]
+    arr += R[k:]
+    return arr
+
+
+def merge_sort(arr: List):
+    if len(arr) == 1:
+        return arr
+    mid = len(arr) // 2
+    b = merge_sort(arr[:mid])
+    c = merge_sort(arr[mid:])
+    return merge(b, c)
+
+
+def test():
+    a = [2, 4, 1, 3, 7, 8, 4, 5, 2]
+    assert merge_sort(a) == list(sorted(a))
+
+
+test()
