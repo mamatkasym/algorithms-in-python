@@ -3,7 +3,7 @@ Given array of numbers and s target numbers. Find two distinct number(distinct p
 """
 
 
-def two_sum(nums: list[int], target: int) -> tuple[int, int]:
+def two_sum(nums: list[int], target: int) -> tuple[int, int] or int:
     nums.sort()
     lo = 0
     hi = len(nums) - 1
@@ -17,19 +17,19 @@ def two_sum(nums: list[int], target: int) -> tuple[int, int]:
         else:
             hi -= 1
 
-    return -1, -1
+    return -1
 
 
 def test_two_sum():
     import random
     nums = [random.randint(1, 1000) for _ in range(100)]
-    target = random.randint(1, 1000)
-    a, b = two_sum(nums, target)
-    if (a, b) != (-1, -1):
-        assert nums[a] + nums[b] == target
+    exist = set()
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            exist.add(nums[i] + nums[j])
+    for x in range(2001):
+        if x in exist:
+            assert two_sum(nums, x) != -1
 
-    nums = [2, 3, 5, 1, 4, 4, 9, 4, 3, 8]
-    assert two_sum(nums, 10) != (-1, -1)
-    assert two_sum(nums, 15) == (-1, -1)
-    assert two_sum(nums, 8) != (-1, -1)
-    assert two_sum(nums, 2) == (-1, -1)
+        else:
+            assert two_sum(nums, x) == -1
