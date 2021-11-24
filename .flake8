@@ -1,0 +1,3 @@
+[flake8]
+exclude = .git,__pycache__,contests,main.py,draft.py
+max-line-length = 119
