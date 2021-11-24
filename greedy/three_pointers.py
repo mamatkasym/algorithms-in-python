@@ -1,15 +1,26 @@
-from greedy.two_pointers import two_sum
+from typing import List, Tuple
 
 
-def three_sum(nums: list[int], target: int) -> tuple[int, int, int] or int:
-    nums_wi = [(v, i) for i, v in enumerate(nums)]
+def three_sum(nums: List[int], target: int) -> Tuple[int, int, int] or int:
+    nums = [(v, i) for i, v in enumerate(nums)]
     nums.sort()
     for i in range(len(nums)):
-        trg = target - nums_wi[i][0]
-        result = two_sum(nums, trg)
+        trg = target - nums[i][0]
+        ind = nums[i][1]
+        lo = 0
+        hi = len(nums) - 1
+        result = -1
+        while lo != hi:
+            if nums[lo][0] + nums[hi][0] == trg:
+                result = nums[lo][1], nums[hi][1]
+                break
+            elif nums[lo][0] + nums[hi][0] < trg:
+                lo += 1
+            else:
+                hi -= 1
         if result != -1:
             a, b = result
-            if a != i and b != i:
+            if a != ind and b != ind:
                 return i, a, b
 
     return -1
