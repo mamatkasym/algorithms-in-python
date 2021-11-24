@@ -10,7 +10,6 @@ And so on, i.e. every time we select and add the edge with minimal weight that c
 with one unselected vertex. The process is repeated until the spanning tree contains all vertices
 (or equivalently until we have n−1 edges).
 """
-from typing import List
 INF = 10 ** 10
 
 
@@ -19,10 +18,10 @@ class Edge:
     to = -1
 
 
-def prim(n: int, edges: List[List]):
-    total_weight = 0
-    selected = [False] * n
-    min_e = [Edge] * n
-    min_e[0].weight = 0
-    for i in range(n):
-        v = -1
+# def prim(n: int, edges: List[List]):
+#     total_weight = 0
+#     selected = [False] * n
+#     min_e = [Edge] * n
+#     min_e[0].weight = 0
+#     for i in range(n):
+#         v = -1

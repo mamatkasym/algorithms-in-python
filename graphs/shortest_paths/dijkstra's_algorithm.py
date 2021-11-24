@@ -4,7 +4,7 @@ The weights of all edges are non-negative. You are also given a starting vertex 
 This article discusses finding the lengths of the shortest paths from a starting vertex s to all other vertices,
 and output the shortest paths themselves.
 """
-from typing import List, Tuple
+from typing import List
 
 
 # An algorithm described by the Dutch computer scientist Edsger W. Dijkstra in 1959
@@ -37,20 +37,20 @@ def dijkstra(n: int, s: int, e: List[List], distance: List[int], marked: List[in
     print(pred)
 
 
-def test():
-
-    n = int(input())
-    m = int(input())
-
-    edges = [[None] for _ in range(n)]
-    distance = [INF] * n
-    marked = [False] * n
-
-    for _ in range(m):
-        u, v, w = map(int, input().split())
-        edges[u].append((v, w))
-        edges[v].append((u, w))
-    print(edges)
-
-
-test()
+# def test():
+#
+#     n = int(input())
+#     m = int(input())
+#
+#     edges = [[None] for _ in range(n)]
+#     distance = [INF] * n
+#     marked = [False] * n
+#
+#     for _ in range(m):
+#         u, v, w = map(int, input().split())
+#         edges[u].append((v, w))
+#         edges[v].append((u, w))
+#     print(edges)
+#
+#
+# test()

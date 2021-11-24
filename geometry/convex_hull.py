@@ -58,8 +58,9 @@ def convex_hull(points: List[Tuple]):
     return ans
 
 
-def main():
-    # points = [(4, 1), (6, 1), (2, 2), (6, 2), (9, 2), (11, 2), (5, 3), (7, 4), (12, 4), (5, 5), (3, 6), (9, 6), (6, 7), (7, 1)]
+def test():
+    # points = [(4, 1), (6, 1), (2, 2), (6, 2), (9, 2), (11, 2),
+    # (5, 3), (7, 4), (12, 4), (5, 5), (3, 6), (9, 6), (6, 7), (7, 1)]
     while True:
         n = int(input())
         if not n:
@@ -72,7 +73,3 @@ def main():
         print(len(ans))
         for point in ans:
             print(point[0], point[1])
-
-
-if __name__ == '__main__':
-    main()

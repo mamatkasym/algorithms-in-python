@@ -6,9 +6,9 @@ class OrderedSet:
         self.arr = sorted(list(iterable))
         self.size = len(self.arr)
 
-    def insert(self):
-        le = 0
-        ri = self.size
+    # def insert(self):
+    #     le = 0
+    #     ri = self.size
 
 
 class Crazy(object):

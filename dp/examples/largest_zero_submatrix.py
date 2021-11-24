@@ -14,8 +14,9 @@ def solve(matrix: List[List]) -> int:
     n = len(matrix)
     m = len(matrix[0])
 
-    # d[i][j] if the largest row number ( from 0 to i-1 ), in which there is an element equal to 1 in the j's column
+    # d[i][j] is the largest row number ( from 0 to i-1 ), in which there is an element equal to 1 in the j's column
     d = [-1] * m
+    # left[j] is left boundary for TODO
     left = [0] * m
     right = [0] * m
     stack = []

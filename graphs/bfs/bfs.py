@@ -1,12 +1,13 @@
-from typing import List
+from collections import deque
+from typing import List, Deque
 
 
-def recursiveBFS(graph: List[List[int]], q: List[int], visited: List[bool], key: int):
+def recursiveBFS(graph: List[List[int]], q: Deque[int], visited: List[bool], key: int):
     if not q:
         return "Not Found"
 
     # pop last node from queue and print it
-    v = q.pop()
+    v = q.popleft()
     if v == key:
         return "Found"
 
@@ -23,7 +24,7 @@ def recursiveBFS(graph: List[List[int]], q: List[int], visited: List[bool], key:
 
 def iterativeBFS(graph: List[List[int]], s: int, visited: List[int], key: int):
     # create a queue needed for BFS
-    q = []
+    q = deque()
 
     # mark source node as discovered
     visited[s] = True
@@ -34,7 +35,7 @@ def iterativeBFS(graph: List[List[int]], s: int, visited: List[int], key: int):
     # while queue isn't empty
     while q:
         # pop last node from queue and print it
-        v = q.pop()
+        v = q.popleft()
         if v == key:
             return "Found"
 

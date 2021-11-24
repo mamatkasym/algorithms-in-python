@@ -3,7 +3,7 @@ Time complexity:
     Worst case: O(n)
     Average: O(n * lg(n))
 
-It has advantage on sorting on placeQ, i.e. it does not require any extra storage
+It has advantage on sorting on place, i.e. it does not require any extra storage
 Applies divide and conquer paradigm
 The key process is a partition
 The worst case occurs when the partition process always picks greatest or smallest element as pivot
@@ -77,7 +77,7 @@ def randomized_quicksort(A: List, p: int, r: int):
         quicksort(A, q + 1, r)
 
 
-if __name__ == '__main__':
+def test():
     A = [13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11]
     quicksort(A, 0, len(A) - 1)
     print(A)

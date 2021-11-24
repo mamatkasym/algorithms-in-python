@@ -13,4 +13,3 @@ def gcd(a, b):
 print('Enter two integers:')
 x, y = map(int, input().split())
 print(gcd(x, y))
-

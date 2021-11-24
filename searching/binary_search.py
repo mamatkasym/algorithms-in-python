@@ -1,5 +1,6 @@
 """
-Suppose that we are given a sorted array of n elements and we want to check if the array contains an element with a target value x
+Suppose that we are given a sorted array of n elements and we want to check if the array contains an element with
+a target value x
 """
 from typing import List
 

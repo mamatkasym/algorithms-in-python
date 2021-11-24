@@ -5,5 +5,6 @@ so that the sum of values of the nodes you select is maximized, and no two adjac
 The desired solution has complexity O(n).
 """
 
+
 def solve():
     pass

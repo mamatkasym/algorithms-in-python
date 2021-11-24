@@ -1,20 +1,20 @@
 """
-Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the knapsack.
-In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which represent values and weights associated with n items respectively.
-Also given an integer W which represents knapsack capacity, find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to W.
-You cannot break an item, either pick the complete item or don’t pick it (0-1 property)
+Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the
+knapsack. In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which represent values and weights
+associated with n items respectively. Also given an integer W which represents knapsack capacity, find out the maximum
+value subset of val[] such that sum of the weights of this subset is smaller than or equal to W. You cannot break
+an item, either pick the complete item or don’t pick it (0-1 property)
 """
-from typing import List
 
 
-def knapsack(val: List, weights: List, W: int, N: int):
+def knapsack(val: list, weights: list, W: int, N: int):
     """
     Time complexity: O(N*W)
     Memory complexity: O(N*W)
     """
     if not N:
         N = len(weights)
-    dp = [[0 for x in range(W + 1)] for x in range(N)]
+    dp = [[0 for _ in range(W + 1)] for _ in range(N)]
 
     for i in range(N):
         for w in range(W+1):
@@ -28,14 +28,14 @@ def knapsack(val: List, weights: List, W: int, N: int):
     return dp[N-1][W]
 
 
-def optimized_space_knapsack(val: List, weights: List, W: int, N: int):
+def optimized_space_knapsack(val: list, weights: list, W: int, N: int):
     """
     Time complexity: O(N*W)
     Memory complexity: O(W)
     """
     if not N:
         N = len(weights)
-    dp = [0 for x in range(W + 1)]
+    dp = [0 for _ in range(W + 1)]
 
     for i in range(N):
         for w in range(W, 0, -1):
@@ -44,14 +44,12 @@ def optimized_space_knapsack(val: List, weights: List, W: int, N: int):
     return dp[W]
 
 
-def fractional_knapsack(val: List, weights: List, W: int, N: int):
+def fractional_knapsack(val: list, weights: list, W: int):
     """
     Time complexity: O(N*W)
     Memory complexity: O(W)
     """
-    if not N:
-        N = len(weights)
-    dp = [0 for x in range(W + 1)]
+    dp = [0 for _ in range(W + 1)]
     val = [(w, i) for i, w in enumerate(val)]
     val.sort(key=lambda x: -x[0])
     for v in val:
@@ -70,7 +68,4 @@ def test():
     n = len(val)
     print(knapsack(val, wt, W, n))
     print(optimized_space_knapsack(val, wt, W, n))
-    print(fractional_knapsack(val, wt, W, n))
-
-
-test()
+    print(fractional_knapsack(val, wt, W))

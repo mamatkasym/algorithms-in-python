@@ -1,5 +1,3 @@
-from typing import List
-
 
 class Point:
     def __init__(self, x, y):
@@ -7,6 +5,5 @@ class Point:
         self.y = y
 
 
-def triangle_area(a: Point, b: Point, c: Point):
-    pass
-
+# def triangle_area(a: Point, b: Point, c: Point):
+#     pass

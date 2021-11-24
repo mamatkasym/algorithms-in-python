@@ -2,7 +2,6 @@
 A binary heap is a special data structure that resembles a binary tree.
 It differs in the sense that the root of any subtree should be the smallest or the largest element.
 """
-import heapq
 
 
 class Heap:
@@ -47,7 +46,7 @@ class MaxHeap:
         self._siftdown(0, len(self.heap) - 1)
 
     def _siftdown(self, start_pos, pos):
-        'Max heap variant of _siftdown'
+        # Max heap variant of _siftdown
         new_item = self.heap[pos]
         # Follow the path to the root, moving parents down until finding a place
         # new item fits.
@@ -87,7 +86,7 @@ class MaxHeap:
             self.heap[pos] = self.heap[child_pos]
             pos = child_pos
             child_pos = 2 * pos + 1
-        # The leaf at pos is empty now.  Put newitem there, and bubble it up
+        # The leaf at pos is empty now.  Put new item there, and bubble it up
         # to its final resting place (by sifting its parents down).
         self.heap[pos] = new_item
         self._siftdown(start_pos, pos)

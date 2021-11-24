@@ -1,44 +1,48 @@
 """
 Find all permutation of array [1, 2, 3, ..., n]
 """
-from typing import List
+from typing import List, Sequence
+from copy import copy
+from itertools import permutations
 
-result = []
 
-
-def permute(pos: int, arr: List, n: int):
+def permute(pos: int, arr: Sequence, n: int, result: List):
     if pos == n:
-        result.append(arr.copy())
+        result.append(tuple(copy(arr)))
     else:
         for j in range(pos, n):
             arr[pos], arr[j] = arr[j], arr[pos]
-            permute(pos+1, arr, n)
+            permute(pos + 1, arr, n, result)
             arr[pos], arr[j] = arr[j], arr[pos]
 
 
-def main():
-    n = int(input())
-    arr = [i+1 for i in range(n)]
-    permute(0, arr, n)
-    print(result)
-
 class AllPermutations:
     result = []
+
     def permute(self, pos, arr, n):
         if pos == n:
-            result.append(arr.copy())
+            self.result.append(arr.copy())
         else:
             for j in range(pos, n):
                 arr[pos], arr[j] = arr[j], arr[pos]
-                permute(pos+1, arr, n)
+                self.permute(pos + 1, arr, n)
                 arr[pos], arr[j] = arr[j], arr[pos]
-    def getAll(self, n):
+
+    def get_all(self, n):
         if not n:
             return []
-        arr = [i+1 for i in range(n)]
+        arr = [i + 1 for i in range(n)]
         self.permute(0, arr, n)
-        return result
+        return self.result
+
+
+def test():
+    iterable = [1, 2, 3, 4]
+    _permutations = []
+    permute(0, iterable, 4, _permutations)
+    assert len(_permutations) == 24
+    assert sorted(list(permutations(iterable))) == sorted(_permutations)  # TODO check without sorted
 
 
 if __name__ == '__main__':
-    main()
+    test()

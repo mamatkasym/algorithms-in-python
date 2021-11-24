@@ -50,5 +50,5 @@ def insert(t: Treap, x: int, y: int) -> Treap:
     return merge(t1, t2)
 
 
-def remove(t: Treap, x: int) -> Treap:
-    pass
+# def remove(t: Treap, x: int) -> Treap:
+#     pass
