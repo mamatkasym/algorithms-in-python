@@ -16,11 +16,22 @@ def minimum_coins(coins: list[int], target: int) -> int:
     n = len(coins)
     # dp[i] is the minimum number coins required to get a sum i
     dp = [n + 1] * (target + 1)
+    # first coin used to construct optimal solution
+    first = [0] * (target + 1)
     # no coins are needed to form empty sum
     dp[0] = 0
     for i in range(target + 1):
         for coin in coins:
-            if i - coin >= 0:
-                dp[i] = min(dp[i - coin] + 1, dp[i])
+            if i - coin >= 0 and dp[i] < dp[i - coin] + 1:
+                dp[i] = dp[i - coin] + 1
+                first[i] = coin
+
+# ******** Optional logs *************************************
+    print(f'Optimal solution construct {target} is:')
+    while target - first[target] > 0:
+        print(first[target], '+', end=' ')
+        target -= first[target]
+    print('=', len(first) - 1)
+# *************************************************************
 
     return dp[target]
