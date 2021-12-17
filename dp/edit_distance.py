@@ -13,11 +13,11 @@ def edit_distance(s: str, t: str) -> int:
     n = len(s)
     m = len(t)
     # dis[i][j] - minimum number of steps transform s[0...i] into t[0...j]
-    dis = [[n + m] * m for _ in range(n)]
+    dis = [[n + m] * (m + 1) for _ in range(n + 1)]
     for i in range(n):
         for j in range(m):
             if i == 0 or j == 0:
-                dis[i][j] = max(i, j) + 1
+                dis[i][j] = max(i, j)
             else:
                 cost = s[i] != t[j]
                 dis[i][j] = min(
@@ -25,7 +25,7 @@ def edit_distance(s: str, t: str) -> int:
                     dis[i - 1][j] + 1,  # remove the last character from s
                     dis[i - 1][j - 1] + cost  # match of modify the last character of s
                 )
-    return dis[n - 1][m - 1]
+    return dis[n][m]
 
 
 def test_edit_distance():
