@@ -4,16 +4,17 @@ Memory: O(n)
 """
 
 
-N = 10 ** 2
-is_prime = [True] * N
-primes = []
+def primes(n):
+    """ Return prime numbers until n """
 
-for i in range(2, N):
-    if is_prime[i]:
-        primes.append(i)
-        j = i + i
-        while j < N:
-            is_prime[j] = False
-            j += i
+    is_prime = [True] * n
+    prime_numbers = []
 
-print(primes)
+    for i in range(2, n):
+        if is_prime[i]:
+            prime_numbers.append(i)
+            j = i + i
+            while j < n:
+                is_prime[j] = False
+                j += i
+    return prime_numbers
