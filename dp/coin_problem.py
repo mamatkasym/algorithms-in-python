@@ -40,6 +40,8 @@ def number_of_ways(coins: list[int], target: int) -> int:
     :param coins: set of integer values of coins
     :param target: target number to form using coins
     :return: number of different ways to form target using coins
+    TC: O(len(coins) * target)
+    MC: O(len(coins) * target)
     """
     count = [0] * (target + 1)
     for i in range(1, target + 1):
