@@ -7,7 +7,7 @@ from graphs.trees.binary_trees.traversals import inorder
 
 
 def bst_minimum(root: Node) -> Node or None:
-    """ Return node with minimum value in given tree """
+    """ Return node with minimum value in given bst """
     if not root:
         return root
     while root.left:
@@ -16,6 +16,7 @@ def bst_minimum(root: Node) -> Node or None:
 
 
 def bst_maximum(root: Node) -> Node or None:
+    """ Return node with maximum value in given bst """
     if not root:
         return root
     while root.right:
@@ -75,6 +76,11 @@ def delete_node_iterative(root: Node, key: int) -> Node:
 
 
 def delete_node_recursive(root: Node, key: int) -> Node or None:
+    """
+    delete node with value key from bst with root root
+    The time complexity of the above solution is O(n), where n is the size of the BST,
+    and requires space proportional to the tree’s height for the call stack
+    """
     if not root:
         return root
     if key < root.val:
@@ -94,7 +100,58 @@ def delete_node_recursive(root: Node, key: int) -> Node or None:
     return root
 
 
-def test_delete_node_iterative():
+def insert_node_recursive(root: Node, key: int) -> Node:
+    """
+    The time complexity is O(h), where h is the BST height.
+    The space complexity is also O(h).
+    """
+    if not root:
+        return Node(key)
+    if key < root.val:
+        root.left = insert_node_recursive(root.left, key)
+    else:
+        root.right = insert_node_recursive(root.right, key)
+
+    return root
+
+
+def insert_node_iterative(root: Node, key: int) -> Node:
+    """
+    The time complexity is O(h), where h is the BST height.
+    The space complexity is also O(1).
+    """
+    curr = root
+
+    # pointer to store the parent of the current node
+    parent = None
+
+    # if the tree is empty, create a new node and set it as root
+    if root is None:
+        return Node(key)
+
+    # traverse the tree and find the parent node of the given key
+    while curr:
+
+        # update the parent to the current node
+        parent = curr
+
+        # if the given key is less than the current node,
+        # go to the left subtree; otherwise, go to the right subtree.
+        if key < curr.data:
+            curr = curr.left
+        else:
+            curr = curr.right
+
+    # construct a node and assign it to the appropriate parent pointer
+    if key < parent.data:
+        parent.left = Node(key)
+    else:
+        parent.right = Node(key)
+
+    return root
+
+
+def test_delete_node():
     values = [5, 3, 8, 1, 4, 6, 9, None, 2, None, None, None, 7]
     nodes = [Node(v) if v else None for v in values]
     for i in range(len(nodes)):
@@ -135,5 +192,3 @@ def test_delete_node_iterative():
     tree = copy.deepcopy(nodes)
     res = delete_node_recursive(tree[0], 2)
     assert list(inorder.recursive(res)) == [1, 3, 4, 5, 6, 7, 8, 9]
-
-test_delete_node_iterative()
