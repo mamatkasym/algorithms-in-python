@@ -6,7 +6,7 @@ from graphs.trees.binary_trees.ds import Node
 from graphs.trees.binary_trees.traversals import inorder
 
 
-def tree_minimum(root: Node) -> Node:
+def bst_minimum(root: Node) -> Node or None:
     """ Return node with minimum value in given tree """
     if not root:
         return root
@@ -15,7 +15,20 @@ def tree_minimum(root: Node) -> Node:
     return root
 
 
-def delete_node(root: Node, key: int) -> Node:
+def bst_maximum(root: Node) -> Node or None:
+    if not root:
+        return root
+    while root.right:
+        root = root.right
+    return root
+
+
+def delete_node_iterative(root: Node, key: int) -> Node:
+    """
+    delete node with value key from bst with root root
+    The time complexity of the above solution is O(n), where n is the size of the BST.
+    The auxiliary space required by the program is O(n) for recursion (call stack).
+    """
     parent = None
     curr = root
 
@@ -40,9 +53,9 @@ def delete_node(root: Node, key: int) -> Node:
 
     # Case 2: If both children are not null
     elif curr.left and curr.right:
-        successor = tree_minimum(curr.right)
+        successor = bst_minimum(curr.right)
         val = successor.val
-        delete_node(curr, val)
+        delete_node_iterative(curr, val)
         curr.val = val
     # Case 3: If only one of the children if not null
     else:
@@ -61,7 +74,27 @@ def delete_node(root: Node, key: int) -> Node:
     return root
 
 
-def test_delete_node():
+def delete_node_recursive(root: Node, key: int) -> Node or None:
+    if not root:
+        return root
+    if key < root.val:
+        root.left = delete_node_recursive(root.left, key)
+    elif key > root.val:
+        root.right = delete_node_recursive(root.right, key)
+    else:
+        if root.left is None and root.right is None:
+            return None
+        elif root.left and root.right:
+            predecessor = bst_maximum(root.left)
+            root.val = predecessor.val
+            root.left = delete_node_recursive(root.left, predecessor.val)
+        else:
+            child = root.left if root.left else root.right
+            root = child
+    return root
+
+
+def test_delete_node_iterative():
     values = [5, 3, 8, 1, 4, 6, 9, None, 2, None, None, None, 7]
     nodes = [Node(v) if v else None for v in values]
     for i in range(len(nodes)):
@@ -71,17 +104,36 @@ def test_delete_node():
             nodes[i].right = nodes[2*i+2]
     # delete root
     tree = copy.deepcopy(nodes)
-    res = delete_node(tree[0], 5)
+    res = delete_node_iterative(tree[0], 5)
     assert list(inorder.recursive(res)) == [1, 2, 3, 4, 6, 7, 8, 9]
     # delete node with two children
     tree = copy.deepcopy(nodes)
-    res = delete_node(tree[0], 3)
+    res = delete_node_iterative(tree[0], 3)
     assert list(inorder.recursive(res)) == [1, 2, 4, 5, 6, 7, 8, 9]
     # delete node with one children
     tree = copy.deepcopy(nodes)
-    res = delete_node(tree[0], 6)
+    res = delete_node_iterative(tree[0], 6)
     assert list(inorder.recursive(res)) == [1, 2, 3, 4, 5, 7, 8, 9]
     # delete leaf node
     tree = copy.deepcopy(nodes)
-    res = delete_node(tree[0], 2)
+    res = delete_node_iterative(tree[0], 2)
     assert list(inorder.recursive(res)) == [1, 3, 4, 5, 6, 7, 8, 9]
+
+    # delete root
+    tree = copy.deepcopy(nodes)
+    res = delete_node_recursive(tree[0], 5)
+    assert list(inorder.recursive(res)) == [1, 2, 3, 4, 6, 7, 8, 9]
+    # delete node with two children
+    tree = copy.deepcopy(nodes)
+    res = delete_node_recursive(tree[0], 3)
+    assert list(inorder.recursive(res)) == [1, 2, 4, 5, 6, 7, 8, 9]
+    # delete node with one children
+    tree = copy.deepcopy(nodes)
+    res = delete_node_recursive(tree[0], 6)
+    assert list(inorder.recursive(res)) == [1, 2, 3, 4, 5, 7, 8, 9]
+    # delete leaf node
+    tree = copy.deepcopy(nodes)
+    res = delete_node_recursive(tree[0], 2)
+    assert list(inorder.recursive(res)) == [1, 3, 4, 5, 6, 7, 8, 9]
+
+test_delete_node_iterative()
