@@ -41,6 +41,3 @@ def test():
 
     assert binary_search2(nums, 23) == 10
     assert binary_search2(nums, 11) == -1
-
-
-test()
