@@ -25,8 +25,9 @@ def z_function_trivial(s: str) -> list[int]:
 def z_function_efficient(s: str) -> list[int]:
     """ TC: O(n^2) """
     n = len(s)
-    z = [] * n
-    ri = le = i = 0
+    z = [0] * n
+    ri = le = 0
+    i = 1
     while i < n:
         if i <= ri:
             z[i] = min(ri - i + 1, z[i - le])
@@ -36,4 +37,6 @@ def z_function_efficient(s: str) -> list[int]:
         if i + z[i] - 1 > ri:
             ri = i + z[i] - 1
             le = i
+
+        i += 1
     return z
