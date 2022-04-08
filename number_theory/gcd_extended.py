@@ -22,7 +22,7 @@ def extended_euclidean_algorithm(a: int, b: int) -> (int, int, int):
 
 
 def test_extended_euclidean_algorithm():
-    N = 10 ** 9
+    N = 10**9
     a, b = random.randint(1, N), random.randint(1, N)
     g, x, y = extended_euclidean_algorithm(a, b)
-    assert a*x + b*y == g and math.gcd(a, b) == g
+    assert a * x + b * y == g and math.gcd(a, b) == g

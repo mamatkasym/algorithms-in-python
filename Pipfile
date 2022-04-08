@@ -10,6 +10,8 @@ pytest = "*"
 [dev-packages]
 jupyter = "*"
 tqdm = "*"
+black = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.9"

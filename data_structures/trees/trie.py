@@ -29,7 +29,7 @@ class Trie:
 
         # do for each character of the key
         for i in range(len(key)):
-            index = ord(key[i]) - ord('a')
+            index = ord(key[i]) - ord("a")
 
             # create a new node if the path does not exist
             if curr.children[index] is None:
@@ -45,7 +45,7 @@ class Trie:
     # if the key is found in the Trie; otherwise, it returns false
     def search(self, key):
 
-        print("Searching", key, end=': ')
+        print("Searching", key, end=": ")
 
         curr = self
 
@@ -53,7 +53,7 @@ class Trie:
         for c in key:
 
             # go to the next node
-            index = ord(c) - ord('a')
+            index = ord(c) - ord("a")
             curr = curr.children[index]
 
             # if the string is invalid (reached end of a path in the Trie)
@@ -73,12 +73,12 @@ class Trie:
     #     curr = self
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # construct a node
     head = Trie()
 
     head.insert("xyz")
-    head.insert('xyr')
-    head.insert('xdf')
+    head.insert("xyr")
+    head.insert("xdf")
     print(head)
     print(head.search("xyz"))

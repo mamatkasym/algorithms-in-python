@@ -10,6 +10,6 @@ def gcd(a, b):
     return gcd(b % a, a)
 
 
-print('Enter two integers:')
+print("Enter two integers:")
 x, y = map(int, input().split())
 print(gcd(x, y))

@@ -19,6 +19,7 @@ def power_modulo(n: int, k: int, m: int) -> int:
 
 # ----------------- TESTS -----------------------------
 
+
 def test_power_modulo():
     n, k, m = random.sample(range(1, 10), 3)
     assert power_modulo(n, k, m) == math.pow(n, k) % m

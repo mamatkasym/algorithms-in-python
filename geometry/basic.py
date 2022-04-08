@@ -16,6 +16,4 @@ def cross_product(a: Point2D, b: Point2D):
 
 
 def cross(a: Point3D, b: Point3D) -> Point3D:
-    return Point3D(a.y * b.z - a.z * b.y,
-                   a.z * b.x - a.x * b.z,
-                   a.x * b.y - a.y * b.x)
+    return Point3D(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)

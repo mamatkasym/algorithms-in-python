@@ -1,4 +1,3 @@
-
 def minimum_coins(coins: list[int], target: int) -> int:
     """
     Given a set
@@ -23,13 +22,13 @@ def minimum_coins(coins: list[int], target: int) -> int:
                 dp[i] = dp[i - coin] + 1
                 first[i] = coin
 
-# ******** Optional logs *************************************
-    print(f'Optimal solution construct {target} is:')
+    # ******** Optional logs *************************************
+    print(f"Optimal solution construct {target} is:")
     while target - first[target] > 0:
-        print(first[target], '+', end=' ')
+        print(first[target], "+", end=" ")
         target -= first[target]
-    print('=', len(first) - 1)
-# *************************************************************
+    print("=", len(first) - 1)
+    # *************************************************************
 
     return dp[target]
 

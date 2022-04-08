@@ -9,7 +9,7 @@ of the suffix of `s` starting at `i`.
 
 
 def z_function_trivial(s: str) -> list[int]:
-    """ TC: O(n^2) """
+    """TC: O(n^2)"""
     n = len(s)
 
     # z[i]  is the length of the longest string that is, at the same time, a prefix of  and a prefix of the suffix of
@@ -23,7 +23,7 @@ def z_function_trivial(s: str) -> list[int]:
 
 
 def z_function_efficient(s: str) -> list[int]:
-    """ TC: O(n^2) """
+    """TC: O(n^2)"""
     n = len(s)
     z = [0] * n
     ri = le = 0

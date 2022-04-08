@@ -28,6 +28,7 @@ def three_sum(nums: List[int], target: int) -> Tuple[int, int, int] or int:
 
 def test_three_sum():
     import random
+
     nums = [random.randint(1, 1000) for _ in range(20)]
     exist = set()
     for i in range(len(nums)):

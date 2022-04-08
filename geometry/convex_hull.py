@@ -7,8 +7,9 @@ from typing import List, Tuple
 
 
 def is_in_upper(left: Tuple, right: Tuple, point: Tuple):
-    if point[1] >= left[1] * (right[0] - point[0]) / (right[0] - left[0]) + right[1] * (point[0] - left[0]) / (
-            right[0] - left[0]):
+    if point[1] >= left[1] * (right[0] - point[0]) / (right[0] - left[0]) + right[1] * (
+        point[0] - left[0]
+    ) / (right[0] - left[0]):
         return True
     return False
 
@@ -18,7 +19,7 @@ def vector(point1: Tuple, point2: Tuple):
 
 
 def clockwise(a: Tuple, b: Tuple, c: Tuple):
-    """ Vector a - c is in clockwise direction from vector b - c"""
+    """Vector a - c is in clockwise direction from vector b - c"""
     return a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1]) < 0
 
 

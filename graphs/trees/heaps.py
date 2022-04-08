@@ -14,6 +14,7 @@ class MaxHeap:
     """
     List implementation of Max heap data structure
     """
+
     def __init__(self):
         self.heap = []
 

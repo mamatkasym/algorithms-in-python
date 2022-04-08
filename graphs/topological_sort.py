@@ -35,7 +35,5 @@ def topological_sort(digraph: dict) -> list[int]:
 
 
 def test_topological_sort():
-    digraph = {'A': {'C', 'D'}, 'B': {'C', 'E'}, 'C': {'D'}, 'E': {'A', 'C'}}
+    digraph = {"A": {"C", "D"}, "B": {"C", "E"}, "C": {"D"}, "E": {"A", "C"}}
     print(topological_sort(digraph))
-
-test_topological_sort()

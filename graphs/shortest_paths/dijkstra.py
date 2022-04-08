@@ -21,7 +21,7 @@ def shortest_paths(n: int, edges: list[list[float]], start: int) -> list[float]:
     Time complexity is O(m * log(n)), where n is number of vertices in the graph.
     """
     # d[i] is distance from start vertex to vertex i
-    dis = [float('inf')] * n
+    dis = [float("inf")] * n
 
     heap = [(0.0, start)]
     dis[start] = 0
@@ -37,4 +37,3 @@ def shortest_paths(n: int, edges: list[list[float]], start: int) -> list[float]:
                 heappush(heap, (dis[v], v))
 
     return dis
-

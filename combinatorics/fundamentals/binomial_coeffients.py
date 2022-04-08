@@ -1,5 +1,3 @@
-import math
-
 from algebra.modular_inverse import using_extended_euclidean_algorithm
 
 
@@ -11,7 +9,7 @@ def timer(fn):
         to_execute = fn(*args, **kwargs)
         end_time = perf_counter()
         execution_time = end_time - start_time
-        print('{0} took {1:.8f}s to execute'.format(fn.__name__, execution_time))
+        print("{0} took {1:.8f}s to execute".format(fn.__name__, execution_time))
         return to_execute
 
     return inner
@@ -25,9 +23,9 @@ def naive(n: int, k: int) -> int:
     Inefficient or overflows for large n
     """
     res = 1
-    for i in range(n - k + 1, n+1):
+    for i in range(n - k + 1, n + 1):
         res *= i
-    for i in range(2, k+1):
+    for i in range(2, k + 1):
         res //= i
     return res
 
@@ -40,8 +38,8 @@ def improved(n: int, k: int) -> int:
     Inefficient or overflows for large n
     """
     res = 1.0
-    for i in range(1, k+1):
-        res = res * (n-k+i) / i
+    for i in range(1, k + 1):
+        res = res * (n - k + i) / i
     return int(res + 0.01)
 
 
@@ -63,15 +61,17 @@ def pascals_triangle(n: int, k: int) -> int:
 
 def binomial_coefficients_modulo_m(n: int, k: int, m: int) -> int:
     def binomial_coefficient(dn: int, dk: int) -> int:
-        """ TC: O(log(m))"""
-        return factorial[n] * using_extended_euclidean_algorithm(factorial[k] * factorial[n - k] % m, m) % m
+        """TC: O(log(m))"""
+        return (
+            factorial[n]
+            * using_extended_euclidean_algorithm(factorial[k] * factorial[n - k] % m, m)
+            % m
+        )
 
     # Pre compute factorials
     factorial = [0] * (n + 1)
     factorial[0] = 1
     for i in range(1, n + 1):
-        factorial[i] = factorial[i-1] * i % m
+        factorial[i] = factorial[i - 1] * i % m
 
     return binomial_coefficient(n, k)
-
-

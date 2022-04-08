@@ -7,7 +7,7 @@ from graphs.trees.binary_trees.traversals import inorder
 
 
 def bst_minimum(root: Node) -> Node or None:
-    """ Return node with minimum value in given bst """
+    """Return node with minimum value in given bst"""
     if not root:
         return root
     while root.left:
@@ -16,7 +16,7 @@ def bst_minimum(root: Node) -> Node or None:
 
 
 def bst_maximum(root: Node) -> Node or None:
-    """ Return node with maximum value in given bst """
+    """Return node with maximum value in given bst"""
     if not root:
         return root
     while root.right:
@@ -155,10 +155,10 @@ def test_delete_node():
     values = [5, 3, 8, 1, 4, 6, 9, None, 2, None, None, None, 7]
     nodes = [Node(v) if v else None for v in values]
     for i in range(len(nodes)):
-        if 2*i + 1 < len(nodes):
-            nodes[i].left = nodes[2*i+1]
-        if 2*i + 2 < len(nodes):
-            nodes[i].right = nodes[2*i+2]
+        if 2 * i + 1 < len(nodes):
+            nodes[i].left = nodes[2 * i + 1]
+        if 2 * i + 2 < len(nodes):
+            nodes[i].right = nodes[2 * i + 2]
     # delete root
     tree = copy.deepcopy(nodes)
     res = delete_node_iterative(tree[0], 5)

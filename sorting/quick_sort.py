@@ -29,14 +29,14 @@ def partition(A: List, p: int, r: int) -> int:
     # Select the last element in interval as a pivot element
     x = A[r]
     i = p - 1
-    print('Partition:', A, p, '-->', r)
+    print("Partition:", A, p, "-->", r)
     for j in range(p, r):
         if A[j] <= x:
             i += 1
             A[i], A[j] = A[j], A[i]
-            print('Partition step:', A)
-    A[i+1], A[r] = A[r], A[i+1]
-    print('Partition ends:', A)
+            print("Partition step:", A)
+    A[i + 1], A[r] = A[r], A[i + 1]
+    print("Partition ends:", A)
     return i + 1
 
 
@@ -44,14 +44,14 @@ def partition_increasing(A: List, p: int, r: int) -> int:
     # Select the last element in interval as a pivot element
     x = A[r]
     i = p - 1
-    print('Partition:', A, p, '-->', r)
+    print("Partition:", A, p, "-->", r)
     for j in range(p, r):
         if A[j] >= x:
             i += 1
             A[i], A[j] = A[j], A[i]
-            print('Partition step:', A)
-    A[i+1], A[r] = A[r], A[i+1]
-    print('Partition ends:', A)
+            print("Partition step:", A)
+    A[i + 1], A[r] = A[r], A[i + 1]
+    print("Partition ends:", A)
     return i + 1
 
 
@@ -64,7 +64,7 @@ def randomized_partition(A: List, p: int, r: int) -> int:
 def quicksort(A: List, p: int, r: int):
     if p < r:
         q = partition(A, p, r)
-        print('Partitioned at', q)
+        print("Partitioned at", q)
         quicksort(A, p, q - 1)
         quicksort(A, q + 1, r)
 
@@ -72,7 +72,7 @@ def quicksort(A: List, p: int, r: int):
 def randomized_quicksort(A: List, p: int, r: int):
     if p < r:
         q = randomized_partition(A, p, r)
-        print('Partitioned at', q)
+        print("Partitioned at", q)
         quicksort(A, p, q - 1)
         quicksort(A, q + 1, r)
 

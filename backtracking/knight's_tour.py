@@ -36,7 +36,7 @@ def knight_tour(n: int):
             print(" ".join(str(x) for x in row))
 
     else:
-        print('Solution does not exist')
+        print("Solution does not exist")
 
 
 def main():
@@ -44,5 +44,5 @@ def main():
     knight_tour(N)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

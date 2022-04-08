@@ -17,15 +17,15 @@ def knapsack(val: list, weights: list, W: int, N: int):
     dp = [[0 for _ in range(W + 1)] for _ in range(N)]
 
     for i in range(N):
-        for w in range(W+1):
+        for w in range(W + 1):
             if i == 0 or w == 0:
                 dp[i][w] = 0
             elif weights[i] <= w:
                 dp[i][w] = max(val[i] + dp[i - 1][w - weights[i]], dp[i - 1][w])
             else:
-                dp[i][w] = dp[i-1][w]
+                dp[i][w] = dp[i - 1][w]
 
-    return dp[N-1][W]
+    return dp[N - 1][W]
 
 
 def optimized_space_knapsack(val: list, weights: list, W: int, N: int):

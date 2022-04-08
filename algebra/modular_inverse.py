@@ -14,7 +14,7 @@ def using_extended_euclidean_algorithm(a: int, m: int) -> int or None:
     """
     g, x, y = gcd_extended.extended_euclidean_algorithm(a, m)
     if g > 1:
-        print('No solution')
+        print("No solution")
         return None
     else:
         return (x % m + m) % m
@@ -28,7 +28,7 @@ def using_binary_exponentiation(a: int, m: int) -> int or None:
     i = 2
     while i * i <= m:
         if not m % i:
-            print(f'm = {m} must be prime number')
+            print(f"m = {m} must be prime number")
             return None
         i += 1
     return power_modulo(a, m - 2, m)
@@ -49,8 +49,9 @@ def inverses(n: int, m: int) -> list[int]:
 
 # ----------------------- TESTS ------------------------------
 
+
 def test_using_extended_euclidean_algorithm():
-    N = 10 ** 9
+    N = 10**9
     a, m = random.randint(1, N), random.randint(1, N)
     inverse = using_extended_euclidean_algorithm(a, m)
     if inverse is not None:
@@ -58,7 +59,7 @@ def test_using_extended_euclidean_algorithm():
 
 
 def test_using_binary_exponentiation():
-    N = 10 ** 9
+    N = 10**9
     a, m = random.randint(1, N), random.randint(1, N)
     inverse = using_binary_exponentiation(a, m)
     if inverse is not None:
@@ -66,7 +67,7 @@ def test_using_binary_exponentiation():
 
 
 def test_inverses():
-    N = 10 ** 6
+    N = 10**6
     primes = sieve_of_eratosthenes.primes(N)
     m = random.choice(primes)
     n = random.randint(1, m)

@@ -25,7 +25,7 @@ def binary_search2(nums: List[int], target: int) -> int:
     n = len(nums)
     b = n // 2
     while b >= 1:
-        while k + b < n and nums[k+b] <= target:
+        while k + b < n and nums[k + b] <= target:
             k += b
         b //= 2
 

@@ -22,6 +22,7 @@ def two_sum(nums: list[int], target: int) -> tuple[int, int] or int:
 
 def test_two_sum():
     import random
+
     nums = [random.randint(1, 1000) for _ in range(100)]
     exist = set()
     for i in range(len(nums)):

@@ -10,7 +10,7 @@ And so on, i.e. every time we select and add the edge with minimal weight that c
 with one unselected vertex. The process is repeated until the spanning tree contains all vertices
 (or equivalently until we have n−1 edges).
 """
-INF = 10 ** 10
+INF = 10**10
 
 
 class Edge:

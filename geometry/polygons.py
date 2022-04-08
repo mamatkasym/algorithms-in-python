@@ -1,5 +1,3 @@
-
-
 def sign(v: int) -> int:
     return 1 if v > 0 else (0 if v == 0 else -1)
 

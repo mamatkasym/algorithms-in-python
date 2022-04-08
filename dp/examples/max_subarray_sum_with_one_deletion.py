@@ -6,11 +6,15 @@ from typing import List
 
 
 def maximum_sum(self, arr: List[int]) -> int:
-    ans = -10 ** 9
+    ans = -(10**9)
     n = len(arr)
 
-    s = [0] * n  # subarray with maximum sum without deletion ending at position i; 0 <= i < n
-    rs = [0] * n  # subarray with maximum sum with deletion ending at position i; 0 <= i < n
+    s = [
+        0
+    ] * n  # subarray with maximum sum without deletion ending at position i; 0 <= i < n
+    rs = [
+        0
+    ] * n  # subarray with maximum sum with deletion ending at position i; 0 <= i < n
 
     s[0] = rs[0] = arr[0]
 

@@ -41,8 +41,10 @@ def test():
     _permutations = []
     permute(0, iterable, 4, _permutations)
     assert len(_permutations) == 24
-    assert sorted(list(permutations(iterable))) == sorted(_permutations)  # TODO check without sorted
+    assert sorted(list(permutations(iterable))) == sorted(
+        _permutations
+    )  # TODO check without sorted
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

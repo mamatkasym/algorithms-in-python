@@ -19,7 +19,7 @@ def primes(n: int) -> list[int]:
 
 
 def primes_optimized(n: int) -> list[int]:
-    """ Needs less operations than previous function """
+    """Needs less operations than previous function"""
     is_prime = [True] * n
     is_prime[0] = is_prime[1] = False
     i = 0
