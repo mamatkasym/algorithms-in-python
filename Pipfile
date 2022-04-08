@@ -12,6 +12,7 @@ jupyter = "*"
 tqdm = "*"
 black = "*"
 flake8 = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.9"
