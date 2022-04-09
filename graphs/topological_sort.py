@@ -4,19 +4,20 @@ before all the nodes it points to
     - As a rule, cyclic graphs don't have valid topological orderings.
     - Topological order can be non-unique
 """
-from collections import defaultdict, Counter, deque
+from collections import Counter, defaultdict, deque
+from typing import Deque, Dict
 
 
 def topological_sort(digraph: dict) -> list[int]:
 
     seen = defaultdict(lambda: False)
-    degree = Counter()
+    degree: Dict[str, int] = Counter()
     for v in digraph:
         for edge in digraph[v]:
             degree[edge] += 1
 
     result = []
-    q = deque()
+    q: Deque = deque()
     for v in digraph:
         if degree[v] == 0:
             seen[v] = True
