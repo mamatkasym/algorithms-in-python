@@ -2,12 +2,13 @@
 A modular multiplicative inverse of an integer a is an integer x such that a⋅x is congruent to 1 modular some modulus m
 """
 import random
+from typing import Optional
 
-from number_theory import gcd_extended, sieve_of_eratosthenes
 from algebra.power import power_modulo
+from number_theory import gcd_extended, sieve_of_eratosthenes
 
 
-def using_extended_euclidean_algorithm(a: int, m: int) -> int or None:
+def using_extended_euclidean_algorithm(a: int, m: int) -> Optional[int]:
     """
     This algorithm is efficient to find inverse of single number, which works in O(log(min(a, m)))
     If you need to find all the inverses of numbers till a then following method works well
@@ -20,7 +21,7 @@ def using_extended_euclidean_algorithm(a: int, m: int) -> int or None:
         return (x % m + m) % m
 
 
-def using_binary_exponentiation(a: int, m: int) -> int or None:
+def using_binary_exponentiation(a: int, m: int) -> Optional[int]:
     """
     a ^ (m-1) = 1 mod m, if m is prime by Fermat's little theorem
     => a * a ^ (m-2) = 1 mod m => a^(m-2) mod m if a's inverse
