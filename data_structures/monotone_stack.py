@@ -1,13 +1,13 @@
 """
-Roughly speaking, the elements in the an monotonous increase stack keeps an increasing order.
+Roughly speaking, the elements in the monotonous increase stack keeps an increasing order.
 """
 
 from collections import deque
+from typing import Any
 
-# Initialize the stack
-ms = deque()
+ms: Any = deque()
 
-A = list()
+A: Any = []
 for i in range(len(A)):
     while not ms and ms[-1] > A[i]:
         ms.pop()
