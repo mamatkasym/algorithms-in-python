@@ -8,7 +8,6 @@ class SumST:
 
     def build(self, v: int, tl: int, tr: int):
         if tl >= tr:
-            print(v, len(self.tree), tl, len(self.arr))
             self.tree[v] = self.arr[tl]
         else:
             tm = (tl + tr) // 2

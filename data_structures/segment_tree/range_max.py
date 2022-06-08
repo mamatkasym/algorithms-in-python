@@ -17,7 +17,6 @@ class MaxST:
 
     def build(self, v: int, tl: int, tr: int):
         if tl >= tr:
-            print(v, len(self.tree), tl, len(self.arr))
             self.tree[v] = (self.arr[tl], 1)
         else:
             tm = (tl + tr) // 2
