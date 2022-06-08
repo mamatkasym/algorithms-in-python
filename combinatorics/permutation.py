@@ -1,12 +1,12 @@
 """
 Find all permutation of array [1, 2, 3, ..., n]
 """
-from typing import List, Sequence
+from typing import List, MutableSequence
 from copy import copy
 from itertools import permutations
 
 
-def permute(pos: int, arr: Sequence, n: int, result: List):
+def permute(pos: int, arr: MutableSequence, n: int, result: List):
     if pos == n:
         result.append(tuple(copy(arr)))
     else:
@@ -17,7 +17,7 @@ def permute(pos: int, arr: Sequence, n: int, result: List):
 
 
 class AllPermutations:
-    result = []
+    result: List = []
 
     def permute(self, pos, arr, n):
         if pos == n:
@@ -44,7 +44,3 @@ def test():
     assert sorted(list(permutations(iterable))) == sorted(
         _permutations
     )  # TODO check without sorted
-
-
-if __name__ == "__main__":
-    test()
