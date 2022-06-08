@@ -1,6 +1,4 @@
-"""
-
-"""
+# type: ignore
 import copy
 from graphs.trees.binary_trees.ds import Node
 from graphs.trees.binary_trees.traversals import inorder
@@ -167,7 +165,7 @@ def test_delete_node():
     tree = copy.deepcopy(nodes)
     res = delete_node_iterative(tree[0], 3)
     assert list(inorder.recursive(res)) == [1, 2, 4, 5, 6, 7, 8, 9]
-    # delete node with one children
+    # delete node with one child
     tree = copy.deepcopy(nodes)
     res = delete_node_iterative(tree[0], 6)
     assert list(inorder.recursive(res)) == [1, 2, 3, 4, 5, 7, 8, 9]
@@ -184,7 +182,7 @@ def test_delete_node():
     tree = copy.deepcopy(nodes)
     res = delete_node_recursive(tree[0], 3)
     assert list(inorder.recursive(res)) == [1, 2, 4, 5, 6, 7, 8, 9]
-    # delete node with one children
+    # delete node with one child
     tree = copy.deepcopy(nodes)
     res = delete_node_recursive(tree[0], 6)
     assert list(inorder.recursive(res)) == [1, 2, 3, 4, 5, 7, 8, 9]

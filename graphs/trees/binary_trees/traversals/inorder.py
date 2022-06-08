@@ -12,7 +12,7 @@ def recursive(root: Node):
 def iterative(root: Node):
     if not root:
         return
-    stack = []
+    stack: list[Node] = []
     curr = root
     while stack or curr:
         if curr:
