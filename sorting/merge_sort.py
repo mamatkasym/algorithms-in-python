@@ -1,23 +1,32 @@
-from typing import List
+"""
+Worst case time complexity: O(n*log(n))
+Average time complexity: O(n*log(n))
+Tags: Divide and conquer, Two pointers
+
+Algorithm:
+    - Divide the unsorted array into subarray, each containing a single element.
+    - Take adjacent pairs of two single-element array and merge them to form an array of 2 elements.
+    - Repeat the process till a single sorted array is obtained.
+"""
 
 
-def merge(L, R):
+def merge(left: list[int], right: list[int]) -> list[int]:
     arr = []
     j = k = 0
-    while j < len(L) and k < len(R):
-        if L[j] < R[k]:
-            arr.append(L[j])
+    while j < len(left) and k < len(right):
+        if left[j] < right[k]:
+            arr.append(left[j])
             j += 1
         else:
-            arr.append(R[k])
+            arr.append(right[k])
             k += 1
 
-    arr += L[j:]
-    arr += R[k:]
+    arr += left[j:]
+    arr += right[k:]
     return arr
 
 
-def merge_sort(arr: List[int]) -> List[int]:
+def merge_sort(arr: list[int]) -> list[int]:
     if len(arr) == 1:
         return arr
     mid = len(arr) // 2
@@ -26,7 +35,7 @@ def merge_sort(arr: List[int]) -> List[int]:
     return merge(b, c)
 
 
-def faster_merge(arr: List[int], aux: List[int], lo: int, mid: int, hi: int):
+def faster_merge(arr: list[int], aux: list[int], lo: int, mid: int, hi: int):
     for i in range(lo, mid + 1):
         aux[i] = arr[i]
 
@@ -44,8 +53,8 @@ def faster_merge(arr: List[int], aux: List[int], lo: int, mid: int, hi: int):
 
 
 def faster_merge_sort(
-    arr: List[int], aux: List[int], lo: int, hi: int
-):  # Is not really fast TODO
+    arr: list[int], aux: list[int], lo: int, hi: int
+):  # Is not really fast, what is the source? TODO
     if lo == hi:
         return
     mid = (lo + hi) // 2
@@ -54,24 +63,56 @@ def faster_merge_sort(
     faster_merge(arr, aux, lo, mid, hi)
 
 
+def iterative_merge_sort(arr: list[int]):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+
+        iterative_merge_sort(left_arr)
+        iterative_merge_sort(right_arr)
+
+        i = j = k = 0
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] <= right_arr[j]:
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+            k += 1
+
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            k += 1
+            j += 1
+
+
 def test():
     import random
-
-    a = [random.randint(1, 10**9) for _ in range(10**5)]
-
-    sorted_a = list(sorted(a))
     from time import time
 
+    arr = [random.randint(1, 10**9) for _ in range(10**5)]
+    iteratively = [x for x in arr]
+
+    sorted_arr = list(sorted(arr))
+    iterative_merge_sort(iteratively)
     t0 = time()
-    b = merge_sort(a)
+    recursively_sorted = merge_sort(arr)
     elapsed = time() - t0
     print("Elapsed time for merge sort", elapsed)
 
-    aux = [0] * len(a)
+    aux = [0] * len(arr)
     t0 = time()
-    faster_merge_sort(a, aux, 0, len(a) - 1)
+    faster_merge_sort(arr, aux, 0, len(arr) - 1)
     elapsed = time() - t0
     print("Elapsed time for faster merge sort", elapsed)
 
-    assert a == sorted_a
-    assert b == sorted_a
+    assert arr == sorted_arr
+    assert recursively_sorted == sorted_arr
+    assert iteratively == sorted_arr
