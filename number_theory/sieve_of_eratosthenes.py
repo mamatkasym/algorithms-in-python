@@ -1,6 +1,6 @@
 def primes(n: int) -> list[int]:
     """
-    Return prime numbers less than n
+    Returns prime numbers less than n
     Time complexity is O(n*log(log(n)))
     Memory complexity is O(n)
     """
@@ -19,7 +19,7 @@ def primes(n: int) -> list[int]:
 
 
 def primes_optimized(n: int) -> list[int]:
-    """Needs less operations than previous function"""
+    """Needs fewer operations than previous function"""
     is_prime = [True] * n
     is_prime[0] = is_prime[1] = False
     i = 0
