@@ -1,7 +1,8 @@
 .idea
-contests
+temp/
 *.pyc
 main.py
 edit.txt
 notes
 test.py
+.pytest_cache/
