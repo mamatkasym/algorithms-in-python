@@ -1,10 +1,11 @@
+import bisect
 from typing import Sequence
 
 
 def longest_increasing_subsequence(seq: Sequence) -> list[int]:
     """
     :param seq: sequence ordered items
-    :return: array of integers, length of longest subsequence of each prefix
+    :return: array of integers, length of the longest subsequence of each prefix
     TC: O(len(seq) ^ 2)
     MC: O(len(seq))
     """
@@ -19,10 +20,21 @@ def longest_increasing_subsequence(seq: Sequence) -> list[int]:
     return length
 
 
-def longest_increasing_subsequence_optimal(seq: Sequence) -> list[int]:  # TODO
+def longest_increasing_subsequence_optimal(seq: Sequence) -> int:
     """
-    :param seq: sequence ordered items
-    :return: array of integers, length of longest subsequence of each prefix
+    :param seq: sequence of ordered items.
+    :return: length of the longest subsequence.
     TC: O(len(seq) * log(len(seq)))
     MC: O(len(seq))
     """
+    # d[i] is the smallest element at which an increasing subsequence of length i.
+    d = [-float('inf')] + [float('inf')] * (len(seq))
+
+    lis = 1
+    for i, el in enumerate(seq):
+        p = bisect.bisect_left(d, el)
+        if d[p] >= el:
+            d[p] = el
+            lis = max(lis, p)
+
+    return lis
