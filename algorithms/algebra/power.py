@@ -2,17 +2,17 @@ import math
 import random
 
 
-def power_modulo(n: int, k: int, m: int) -> int:
+def power_modulo(base: int, power: int, mod: int) -> int:
     """
     returns n^k mod m
     TC: log(k + m)
     """
     res = 1
-    while k > 0:
-        if k % 2:
-            res = res * n % m
-        k //= 2
-        n = n * n % m
+    while power > 0:
+        if power % 2:
+            res = res * base % mod
+        power //= 2
+        base = base * base % mod
 
     return res
 
