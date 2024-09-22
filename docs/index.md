@@ -5,4 +5,5 @@
 ## [Combinatorics](combinatorics/index.md)
 ## [Data Structures](ds/index.md)
 ## [Dynamic Programming](dp/index.md)
+## [Sorting](sorting/index.md)
   

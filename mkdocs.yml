@@ -1,3 +1,4 @@
 site_name: Algorithms in Python
+site_url: https://mamatkasym.github.io/algorithms-in-python
 nav:
     - Home: index.md
